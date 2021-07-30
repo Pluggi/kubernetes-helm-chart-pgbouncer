@@ -39,10 +39,10 @@ users: {}
 # data format is:
 #     "username1" "password"
 #     "username2" "other-password"
-# existingSecret: myuserlist-secret
+# existingUsersSecret: myuserlist-secret
 
 # the key containing the secret
-# existingSecretKey: userlist.txt
+# existingUsersSecretKey: userlist.txt
 
 # Custom pgbouncer.ini
 settings:
