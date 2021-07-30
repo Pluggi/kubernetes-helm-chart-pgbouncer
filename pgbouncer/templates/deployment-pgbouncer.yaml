@@ -59,7 +59,7 @@ spec:
         - name: {{ .Values.imagePullSecretName }}
       {{- end }}
       volumes:
-        - name: usersSecret
+        - name: userssecret
           secret:
             secretName: {{ template "pgbouncer.usersSecretName" . }}
         - name: config
@@ -88,7 +88,7 @@ spec:
                 # https://freecontent.manning.com/handling-client-requests-properly-with-kubernetes/
                 command: ["/bin/sh","-c","sleep 5"]
           volumeMounts:
-            - name: secret
+            - name: userssecret
               subPath: {{ template "pgbouncer.usersSecretKey" . }}
               mountPath: /etc/pgbouncer/userlist.txt
               readOnly: true
