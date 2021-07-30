@@ -49,4 +49,12 @@ entries:
       urls:
         - https://github.com/Pluggi/kubernetes-helm-chart-pgbouncer/releases/download/v1.0.15/pgbouncer-1.0.15.tgz
       version: 1.0.15
+    - apiVersion: v1
+      created: '2021-07-30T12:30:38Z'
+      description: pgbouncer
+      digest: 868a9e9c714f792339f2fc953b11f067defb5a5d91785f47a76f76a1d38de6a2
+      name: pgbouncer
+      urls:
+        - https://github.com/Pluggi/kubernetes-helm-chart-pgbouncer/releases/download/v1.0.16/pgbouncer-1.0.16.tgz
+      version: 1.0.16
 generated: '2020-07-31T09:58:17.91897671-06:00'
