@@ -92,7 +92,7 @@ spec:
               subPath: {{ template "pgbouncer.usersSecretKey" . }}
               mountPath: /etc/pgbouncer/userlist.txt
               readOnly: true
-            - name: secret
+            - name: config
               mountPath: /etc/pgbouncer
               readOnly: true
           resources:
