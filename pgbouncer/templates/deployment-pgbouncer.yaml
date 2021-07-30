@@ -59,9 +59,15 @@ spec:
         - name: {{ .Values.imagePullSecretName }}
       {{- end }}
       volumes:
-        - name: secret
+        - name: usersSecret
           secret:
             secretName: {{ template "pgbouncer.usersSecretName" . }}
+        - name: config
+          configMap:
+            name: {{ template "pgbouncer.fullname" . }}-config
+            items:
+              - key: pgbouncer.ini
+                path: pgbouncer.ini
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -87,8 +93,7 @@ spec:
               mountPath: /etc/pgbouncer/userlist.txt
               readOnly: true
             - name: secret
-              subPath: pgbouncer.ini
-              mountPath: /etc/pgbouncer/pgbouncer.ini
+              mountPath: /etc/pgbouncer
               readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

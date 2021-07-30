@@ -44,13 +44,13 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Get the users secret.
+Get the users secret name.
 */}}
 {{- define "pgbouncer.usersSecretName" -}}
 {{- if .Values.existingUsersSecret -}}
 {{- printf "%s" .Values.existingUsersSecret -}}
 {{- else -}}
-{{- printf "%s-secret" (include "pgbouncer.fullname" .) -}}
+{{- printf "%s-secret-userlist-txt" (include "pgbouncer.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
