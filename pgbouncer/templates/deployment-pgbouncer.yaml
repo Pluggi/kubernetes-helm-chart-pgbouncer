@@ -65,9 +65,6 @@ spec:
         - name: config
           configMap:
             name: {{ template "pgbouncer.fullname" . }}-config
-            items:
-              - key: pgbouncer.ini
-                path: pgbouncer.ini
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -93,7 +90,8 @@ spec:
               mountPath: /etc/pgbouncer/userlist.txt
               readOnly: true
             - name: config
-              mountPath: /etc/pgbouncer
+              subPath: pgbouncer.ini
+              mountPath: /etc/pgbouncer/pgbouncer.ini
               readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
