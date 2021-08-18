@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  pgbouncer:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2021-08-18T16:49:12.162483182Z"
+    description: PgBouncer chart
+    digest: e36f935e1e3d10def6d8a67547a37d484a0114c3ecb2ac0d3a9238274453cb75
+    home: https://github.com/cradlepoint/kubernetes-helm-chart-pgbouncer
+    name: pgbouncer
+    urls:
+    - https://Pluggi.github.io/kubernetes-helm-chart-pgbouncer/pgbouncer-42.0.7.tgz
+    version: 42.0.7
+generated: "2021-08-18T16:49:12.161677464Z"
