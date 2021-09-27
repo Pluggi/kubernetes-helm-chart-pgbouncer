@@ -64,13 +64,13 @@ spec:
             secretName: {{ template "pgbouncer.usersSecretName" . }}
             items:
               - key: {{ template "pgbouncer.usersSecretKey" . }}
-                name: userlist.txt
+                path: userlist.txt
         - name: config
           configMap:
             name: {{ template "pgbouncer.fullname" . }}-config
             items:
               - key: pgbouncer.ini
-                name: pgbouncer.ini
+                path: pgbouncer.ini
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
