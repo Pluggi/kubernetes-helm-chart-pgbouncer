@@ -63,7 +63,8 @@ settings:
   auth_query: SELECT * FROM pgbouncer.get_auth($1) 
 
 connectionLimits:
-  maxClientConn: 200
+  # defaultPoolSize * (estimated # of db) * (10 to be safe)
+  maxClientConn: "{{ mul .Values.connectionLimits.defaultPoolSize 10 10}}"
   defaultPoolSize: 200
   minPoolSize: 15
   reservePoolSize: 25

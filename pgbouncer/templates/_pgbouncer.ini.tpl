@@ -48,7 +48,7 @@ unix_socket_dir = var/run/postgresql
 
 auth_type = {{ .Values.settings.auth_type }}
 ;auth_file = /8.0/main/global/pg_auth
-auth_file = /etc/pgbouncer/userlist.txt
+auth_file = /etc/pgbouncer.d/userlist.txt
 ;auth_hba_file =
 
 {{- with .Values.settings.auth_query }}
@@ -72,7 +72,7 @@ server_reset_query = DISCARD ALL
 
 ;;; Connection limits
 
-max_client_conn = {{ .Values.connectionLimits.maxClientConn }}
+max_client_conn = {{ tpl .Values.connectionLimits.maxClientConn . }}
 default_pool_size = {{ .Values.connectionLimits.defaultPoolSize }}
 min_pool_size = {{ .Values.connectionLimits.minPoolSize }}
 reserve_pool_size = {{ .Values.connectionLimits.reservePoolSize }}
