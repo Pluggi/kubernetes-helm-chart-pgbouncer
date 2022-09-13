@@ -84,12 +84,14 @@ spec:
               containerPort: {{ .Values.internalPort }}
             - name: admin
               containerPort: 6432
+          {{ if .Values.readinessProbe }}
           readinessProbe:
-            tcpSocket:
-              port: {{ .Values.internalPort }}
+            {{- tpl (.Values.readinessProbe | toYaml) . | nindent 12 }}
+          {{ end }}
+          {{ if .Values.livenessProbe }}
           livenessProbe:
-            tcpSocket:
-              port: {{ .Values.internalPort }}
+            {{- tpl (.Values.livenessProbe | toYaml) . | nindent 12 }}
+          {{ end }}
           lifecycle:
             preStop:
               exec:

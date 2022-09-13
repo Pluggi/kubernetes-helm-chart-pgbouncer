@@ -110,3 +110,10 @@ service:
 global:
   # optionally use namespace as dbname
   namespacedDatabases: false
+
+readinessProbe:
+  tcpSocket:
+    port: "{{ .Values.internalPort }}"
+livenessProbe:
+  tcpSocket:
+    port: "{{ .Values.internalPort }}"
