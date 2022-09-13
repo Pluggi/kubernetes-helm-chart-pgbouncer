@@ -87,10 +87,18 @@ spec:
           {{ if .Values.readinessProbe }}
           readinessProbe:
             {{- tpl (.Values.readinessProbe | toYaml) . | nindent 12 }}
+          {{ else }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.internalPort }}
           {{ end }}
           {{ if .Values.livenessProbe }}
           livenessProbe:
             {{- tpl (.Values.livenessProbe | toYaml) . | nindent 12 }}
+          {{ else }}
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.internalPort }}
           {{ end }}
           lifecycle:
             preStop:
